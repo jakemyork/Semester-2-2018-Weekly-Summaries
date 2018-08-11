@@ -1,0 +1,224 @@
+\documentclass[journal]{IEEEtran}
+%\documentclass[conference]{IEEEtran}
+%\documentclass[conference,compsoc]{IEEEtran}
+%\documentclass{aiaa-pretty}
+%\documentclass{report}
+%\documentclass[10pt,conference,a4paper]{IEEEtran}
+
+\usepackage[ampersand]{easylist}
+\usepackage{mathtools}
+\usepackage{dsfont}
+\usepackage{scrextend}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{listings}
+\usepackage{color}
+\usepackage{algorithm2e} %for pseudo code
+\usepackage{textcomp}
+%\usepackage{graphicx}
+%\usepackage{draftwatermark}
+%\SetWatermarkLightness{0.75}
+%\SetWatermarkScale{.5}
+
+\begin{document}
+
+\title{DSP Weekly Summary}
+{}
+\maketitle
+
+\section{\textbf{Week 1}}
+\subsection{\textbf{Euler's Forward Rectangular Method}}
+Find the difference equation for:
+\[
+    D(s) = \frac{U(s)}{E(s)} = K_0 \frac{s + a}{s + b}
+\]
+\[
+    \rightarrow sU(s) + bU(s) = K_0 (sE(s) + aE(s)) 
+\]
+The corresponding differential equation is:
+\[
+    \dot{u} + bu[k] = K_0(\dot{e} + ae[k]
+\]
+The forward rectangular method gives:
+\[
+    \frac{u[k + 1] - u[k]}{T} + bu[k] = K_0(\frac{e[k + 1] - e[k]}{T} + ae[k]
+\]
+\[
+    \rightarrow u[k + 1] = (1 + bT)u[k] + (K_0aT + K_0)e[k] + K_0 e[k + 1]
+\]
+\subsection{\textbf{System Stabilisation Refresher}}
+To stabilise a system plant, $G(s)$, with a lead compensator of the form:
+\[
+    D(s) = \frac{s + a}{s + b}
+\]
+the closed-loop equation will be:
+\[
+    G_{cl}(s) = \frac{D(s)G(s)}{1 + D(s)G(s)}
+\]
+So the characteristic equation we need to solve is:
+\[
+    1 + D(s)G(s) = 0
+\]
+The zeroes of this formula must all be in the left-half plane to ensure it is stable. Alternatively, there is the PID controller which takes the form:
+\[
+    PID(s) = K_p + \frac{K_i}{s} + K_ds
+\]
+\section{\textbf{Week 2}}
+\subsection{\textbf{Z-Transform}}
+\[
+    \mathcal{Z}\{f[k]\}(z) = \sum_{k = -\infty}^{\infty} f[k]z^{-k}
+\]
+\[
+    \mathcal{Z}\{f[k + n]\} = z^n\mathcal{Z}\{f[k]\} - z^nf[0] - z^{n -1}f[1] - z^{n - 2}f[2] ... \{n > 0\}
+\]
+To link between the $z$ and Laplace transforms, we take the Laplace transform of $f_s(t)$:
+\[
+    \mathcal{L}\{f_s(t)\}(s) = \sum_{k = 0}^{\infty} f[kT](e^{Ts})^{-k}
+\]
+where $z = e^{Ts}$ (note: by this same token, $s = \frac{1}{t}ln(z)$). For the $z$ transform to have a stable result, the poles must be located INSIDE the unit circle:
+\[
+	s = a + jb \rightarrow z = e^{sT} = e^ae^{jb} \rightarrow e^a < 1
+\]
+If the system transfer function is stable, we can then use the Tustin transformation to be sure that the $z$-poles are also stable.
+\subsection{\textbf{Trapezoidal Rule}}
+The trapezoidal rule maps between the $s$ and $z$ domains:
+\[
+    s \rightarrow \frac{2}{T}\frac{z - 1}{z + 1} \quad z \rightarrow \frac{2 + sT}{2 - sT}
+\]
+\subsection{\textbf{Tustin (Bilinear) Transformation}}
+This rule maps between the $j\omega$ and $z$ domains:
+\[
+    \frac{z - 1}{z + 1} \rightarrow j tan(\frac{j\omega T}{2})
+\]
+\subsection{\textbf{Final Value Theorem}}
+If the poles of $(z - 1)F(z)$ are inside the unit circle, then:
+\[
+    \lim_{k\to\infty} f[k] = \lim_{z\to1} \frac{z - 1}{z}F(z)
+\]
+\subsection{\textbf{Comb Function}}
+The comb function is used for sampling:
+\[
+    comb(t) = \sum_{k = -\infty}^{\infty} e^{j2\pi kt}
+\]
+\subsection{\textbf{Finite Geometric Series Refresher}}
+\[
+    \sum_{n = 0}^{N - 1} r^n = \frac{1 - r^N}{1 - r}
+\]
+Example use with the $z$ transform:
+\[
+    |a| < 1 \quad k \in \mathds{Z}
+\]
+\[
+    f[k] =
+    \begin{cases}
+    \ a^k, &\quad k \geq 0\\
+    \ 0, &\quad else\\
+    \end{cases}
+\]
+Using the definition of the $z$ transform, we get:
+\[
+    \rightarrow \lim_{K\to\infty} \sum_{k = 0}^{K - 1} a^k z^{-k} = \lim_{K\to\infty} \sum_{k = 0}^{K - 1} (\frac{a}{z})^k
+\]
+\[
+    = \lim_{K\to\infty} \frac{1 - (\frac{a}{z})^K}{1 - (\frac{a}{z})} = \frac{1 - 0}{1 - (\frac{a}{z})}
+\]
+\[
+    = \frac{1}{1 - (\frac{a}{z})} = \frac{z}{z - a}
+\]
+This derivation is particularly important to the tutorial questions for this week.
+\subsection{\textbf{Some Common Z-Transforms from the Table}}
+\[
+    \frac{1}{s} \rightarrow \frac{z}{z - 1}
+\]
+\[
+    \frac{1}{s^2} \rightarrow T\frac{z}{(z - 1)^2}
+\]
+\[
+    \frac{2}{s^3} \rightarrow T^2\frac{z(z + 1)}{(z - 1)^3}
+\]
+\[
+    \frac{1}{s + a} \rightarrow \frac{z}{z - e^{-aT}}
+\]
+\[
+    \frac{1}{(s + a)^2} \rightarrow T\frac{ze^{-aT}}{(z - e^{-aT})^2}
+\]
+\[
+    \frac{1}{(s + a)(s + b)} \rightarrow \frac{z(e^{-aT} - e^{-bT})}{(b - a)(z - e^{-aT})(z - e^{-bT})}
+\]
+\section{\textbf{Week 3}}
+\subsection{\textbf{Sampled Continuous Functions}}
+The sampled expression for the continuous function, $r(t)$, is $r_s(t)$. The Laplace transform of this sampled function is given by:
+\[
+	R_s(s) = \sum_{k = -\infty}^{\infty} r(kT)e^{-kTs}
+\]
+Using the $z$-transform definition of $z = e^{Ts}$ (and $s = \frac{1}{t}ln(z)$), we get the $z$-transform of this function to be:
+\[
+	R(z) = \sum_{k = -\infty}^{\infty} r(kT)z^{-k}
+\]
+The key point here is that $R_s(s) \leftrightarrow R(z)$. You get the $z$-transform from the sampled signal.
+\subsection{\textbf{Zero Order Hold Operation}}
+The zero order hold function is effectively a block in a block diagram that we can use to hold the sampled function at a value for a sampled period $T$. The transfer function is given by:
+\[
+	ZOH(s) = \frac{1 - e^{-Ts}}{s}
+\]
+\subsection{\textbf{Open and Closed Loop Discrete Systems}}
+The transfer function of an open loop discrete system is:
+\[
+	G(z) = (1 - z^{-1}) \mathcal{Z}\{\frac{G(s)}{s}\}
+\]
+Adding a controller and closing the loop represents the system as per its continuous counterpart:
+\[
+	G_{cl}(z) = \frac{C(z)G(z)}{1 + C(z)G(z)}
+\]
+\subsection{\textbf{Pitfalls Regarding Sampling of Signals}}
+If the input to a system, $R(s)$, is sampled and then passed through a function block, $G(s)$, then the output is:
+\[
+	Y(s) = R_s(s)G(s)
+\]
+and the sampled output is:
+\[
+	Y_s(s) = R_s(s)G_s(s)
+\]
+When converted to the $z$ domain, the transform would be represented as:
+\[
+	Y(z) = R(z)G(z)
+\]
+However, if the unsampled input to a system, $R(s)$, is passed through a function block, $G(s)$, then the output is:
+\[
+	Y(s) = R(s)G(s)
+\]
+and the sampled output is:
+\[
+	Y_s(s) = [R(s)G(s)]_s
+\]
+When converted to the $z$ domain, the transform would be represented as:
+\[
+	Y(z) = RG(z)
+\]
+\subsection{\textbf{Loop Gain}}
+The loop gain of a system is defined as any function blocks that are present in the system if the loop is open. A feedback controller ($H(s)$, for example) would not be part of this function. Loop gain is defined as:
+\[
+	L(z) = C(z)G(z)
+\]
+More generally, the loop gain is defined as:
+\[
+	L(z) = \frac{N(z)}{(z - 1)^nD(z)} \quad for n \geq 0
+\]
+where $N(z)$ and $D(z)$ are the numerator and denominator polynomials with no roots at unity. $L(z)$ has $n$ poles at unity. It is therefore called a type $n$ system.
+\subsection{\textbf{Steady State Error}}
+Applying the final value theorem above, the steady state error function of a system is defined as:
+\[
+	e(\infty) = \lim_{z\to1} \frac{(z - 1)R(z)}{z(1 + L(z))}
+\]
+\subsection{\textbf{Position, Velocity and Acceleration Error Constants}}
+\[
+	K_p = \lim_{z\to1} L(z)
+\]
+\[
+	K_v = \lim_{z\to1} \frac{(z - 1)L(z)}{T}
+\]
+\[
+	K_p = \lim_{z\to1} \frac{(z - 1)^2L(z)}{T^2}
+\]
+There is a table in Lecture 3c that shows the steady state error values in response to different inputs, which shows where these constants come in. To remove any steady state error of a system, add poles at $z = 1$ (note: the closed loop system should still remain stable).
+\end{document}
