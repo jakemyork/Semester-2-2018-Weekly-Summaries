@@ -1,0 +1,86 @@
+\documentclass[journal]{IEEEtran}
+%\documentclass[conference]{IEEEtran}
+%\documentclass[conference,compsoc]{IEEEtran}
+%\documentclass{aiaa-pretty}
+%\documentclass{report}
+%\documentclass[10pt,conference,a4paper]{IEEEtran}
+
+\usepackage[ampersand]{easylist}
+\usepackage{mathtools}
+\usepackage{scrextend}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{listings}
+\usepackage{color}
+\usepackage{algorithm2e} %for pseudo code
+\usepackage{textcomp}
+\usepackage{hyperref}
+%\usepackage{graphicx}
+%\usepackage{draftwatermark}
+%\SetWatermarkLightness{0.75}
+%\SetWatermarkScale{.5}
+\hypersetup{colorlinks=true, urlcolor=blue}
+\begin{document}
+
+\title{Communications Techniques Weekly Summary}
+{}
+\maketitle
+
+\section{Week 1}
+All revision of Signals and Systems. Concise summary can be found at \href{https://github.com/jakemyork/Semester-2-2018-Weekly-Summaries/blob/master/CommTechWeek1Revision.pdf}{CommTechWeek1Revision}.
+
+\section{Week 2}
+More revision of Signals and Systems, except considering things in the $f$ domain, not $\omega$ domain. Concise summary provided by Neda Aboutorab can be found at \href{https://github.com/jakemyork/Semester-2-2018-Weekly-Summaries/blob/master/CommTechWeek2Revision.pdf}{CommTechWeek2Revision}.
+
+\section{Week 3}
+\subsection{DEC 2 Refresher}
+Some of the tutorial questions in this course rely on a foundation of DEC 2 knowledge so a useful refresher can be found at \href{https://github.com/jakemyork/Semester-2-2018-Weekly-Summaries/blob/master/DEC2Refresher.pdf}{DEC2Refresher}.
+\subsection{Bandwidth}
+The bandwidth of a signal (or filter) is defined as the width between the origin and the highest positive frequency, or in the case of a signal that has a carrier frequency, the width between the carrier and the highest positive frequency.
+\subsection{Baseband}
+The baseband of a signal is the full range of positive and negative frequencies of the signal.
+\subsection{Carrier Communication}
+In communication involving a carrier, the message signal is shifted through modulation before transmission. For example, a signal with a baseband of 300 Hz to 4.3 kHz that is shifted to a carrier frequency of 3 GHz.
+\linebreak\linebreak
+Antenna size must be $\geq \frac{\lambda}{4}$. At 3 kHz, $\frac{\lambda}{4}$ = 25 km. At 3 GHz, $\frac{\lambda}{4}$ = 2.5 cm (much more physically manageable). This also allows us to use optical fibre for signal transmission, which requires $\geq 10^{14}$ Hz.
+\subsection{Double Sideband - Suppressed Carrier (DSB-SC)}
+DSB-SC transmission requires expensive and complicated circuitry due to the requirement for synchronisation. As the name suggests, the carrier frequency is suppressed and the receiver only sees the two sidebands that are transmitted about the carrier frequency. In order to achieve this mathematically, all that is required is the product of the original signal with a high frequency carrier:
+\[
+	g(t) = m(t)cos(2\pi f_ct)
+\]
+Practically speaking, this type of modulation can be done through the use of a full-bridge rectifier circuit.
+\linebreak\linebreak
+If the bandwidth of the original signal is B, then the bandwidth required for transmission of the DSB-SC signal is 2B.
+\subsection{Demodulation}
+The original message must be recovered from the transmitted signal using demodulation. To do this, we take the product of the transmitted signal with the carrier signal again so that an alias occurs around the message signal original frequency. This signal is then passed through a low-pass filter (and then potentially passed through an amplifier as the output will be $\frac{1}{4}$ of amplitude of the original message.
+\subsection{Double Sideband - Transmitted Carrier (DSB-TC)}
+As the name suggests, this method of modulation transmits the carrier wave with the message signal as per the following:
+\[
+	g(t) = [A + m(t)]cos(2\pi f_ct)
+\]
+Technically, DSB-SC follows this equation, with A = 0. The carrier frequency should be much greater than the bandwidth of the message signal. When transmitting the carrier, the rule of thumb is:
+\begin{itemize}
+	\item $A + m(t) > 0$, which means: 
+	\item $A > min(m(t))$
+	\item $f_c > 5$B, where B is message signal bandwidth
+\end{itemize}
+If the first two items are not adhered to, the message can be over-modulated. This is shown clearly in Figure 1.
+\begin{figure}[h]
+		\hfill\includegraphics[scale=.4]{DSBTC_Overmodulation.jpg}\hspace*{\fill}
+		\caption{Over-modulation possibility}
+	\end{figure}
+\subsection{Modulation Index}
+The modulation index is defined as:
+\[
+	\mu = \frac{max(|m(t)|)}{A}
+\]
+If $\mu > 1$, then the carrier is over-modulated and the envelope will be distorted. To avoid over-modulation, keep $0 < \mu < 1$.
+\subsection{DSB-TC Power and Efficiency}
+\[
+	P_s = \text{average sideband power}, P_c = \text{average carrier power}
+\]
+\[
+	\eta = \text{efficiency} = \frac{P_s}{P_s + P_c}*100\%
+\]
+For DSB-SC, $\eta = 100\%$. For DSB-TC, $\eta < 33\%$. Although less power efficient, DSB-TC requires less complicated and expensive receiver circuitry.
+\end{document}
