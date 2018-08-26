@@ -28,36 +28,44 @@
 
 \section{Week 1}
 All revision of Signals and Systems. Concise summary can be found at \href{https://github.com/jakemyork/Semester-2-2018-Weekly-Summaries/blob/master/CommTechWeek1Revision.pdf}{CommTechWeek1Revision}.
-
+\subsection{Common Rules}
+\subsubsection{Chain Rule}
+\begin{flalign}
+	& \frac{d}{dt}f[g(t)] = \dot{f(t)}\dot{g(t)}
+\end{flalign}
+\subsubsection{Product Rule}
+\begin{flalign}
+	& \frac{d}{dt}f(t)g(t) = f(t)\dot{g(t)} + g(t)\dot{f(t)}
+\end{flalign}
 \section{Week 2}
 More revision of Signals and Systems, except considering things in the $f$ domain, not $\omega$ domain. Concise summary provided by Neda Aboutorab can be found at \href{https://github.com/jakemyork/Semester-2-2018-Weekly-Summaries/blob/master/CommTechWeek2Revision.pdf}{CommTechWeek2Revision}.
 
 \section{Week 3}
-\subsection{DEC 2 Refresher}
+\subsection{\textbf{DEC 2 Refresher}}
 Some of the tutorial questions in this course rely on a foundation of DEC 2 knowledge so a useful refresher can be found at \href{https://github.com/jakemyork/Semester-2-2018-Weekly-Summaries/blob/master/DEC2Refresher.pdf}{DEC2Refresher}.
-\subsection{Bandwidth}
+\subsection{\textbf{Bandwidth}}
 The bandwidth of a signal (or filter) is defined as the width between the origin and the highest positive frequency, or in the case of a signal that has a carrier frequency, the width between the carrier and the highest positive frequency.
-\subsection{Baseband}
+\subsection{\textbf{Baseband}}
 The baseband of a signal is the full range of positive and negative frequencies of the signal.
-\subsection{Carrier Communication}
+\subsection{\textbf{Carrier Communication}}
 In communication involving a carrier, the message signal is shifted through modulation before transmission. For example, a signal with a baseband of 300 Hz to 4.3 kHz that is shifted to a carrier frequency of 3 GHz.
 \linebreak\linebreak
 Antenna size must be $\geq \frac{\lambda}{4}$. At 3 kHz, $\frac{\lambda}{4}$ = 25 km. At 3 GHz, $\frac{\lambda}{4}$ = 2.5 cm (much more physically manageable). This also allows us to use optical fibre for signal transmission, which requires $\geq 10^{14}$ Hz.
-\subsection{Double Sideband - Suppressed Carrier (DSB-SC)}
+\subsection{\textbf{Double Sideband - Suppressed Carrier (DSB-SC)}}
 DSB-SC transmission requires expensive and complicated circuitry due to the requirement for synchronisation. As the name suggests, the carrier frequency is suppressed and the receiver only sees the two sidebands that are transmitted about the carrier frequency. In order to achieve this mathematically, all that is required is the product of the original signal with a high frequency carrier:
-\[
-	g(t) = m(t)cos(2\pi f_ct)
-\]
+\begin{flalign}
+	& g(t) = m(t)cos(2\pi f_ct)
+\end{flalign}
 Practically speaking, this type of modulation can be done through the use of a full-bridge rectifier circuit.
 \linebreak\linebreak
 If the bandwidth of the original signal is B, then the bandwidth required for transmission of the DSB-SC signal is 2B.
-\subsection{Demodulation}
+\subsection{\textbf{Demodulation}}
 The original message must be recovered from the transmitted signal using demodulation. To do this, we take the product of the transmitted signal with the carrier signal again so that an alias occurs around the message signal original frequency. This signal is then passed through a low-pass filter (and then potentially passed through an amplifier as the output will be $\frac{1}{4}$ of amplitude of the original message.
-\subsection{Double Sideband - Transmitted Carrier (DSB-TC)}
+\subsection{\textbf{Double Sideband - Transmitted Carrier (DSB-TC)}}
 As the name suggests, this method of modulation transmits the carrier wave with the message signal as per the following:
-\[
-	g(t) = [A + m(t)]cos(2\pi f_ct)
-\]
+\begin{flalign}
+	& g(t) = [A + m(t)]cos(2\pi f_ct)
+\end{flalign}
 Technically, DSB-SC follows this equation, with A = 0. The carrier frequency should be much greater than the bandwidth of the message signal. When transmitting the carrier, the rule of thumb is:
 \begin{itemize}
 	\item $A + m(t) > 0$, which means: 
@@ -69,18 +77,225 @@ If the first two items are not adhered to, the message can be over-modulated. Th
 		\hfill\includegraphics[scale=.4]{DSBTC_Overmodulation.jpg}\hspace*{\fill}
 		\caption{Over-modulation possibility}
 	\end{figure}
-\subsection{Modulation Index}
+\subsection{\textbf{Modulation Index}}
 The modulation index is defined as:
-\[
-	\mu = \frac{max(|m(t)|)}{A}
-\]
+\begin{flalign}
+	& \mu = \frac{max(|m(t)|)}{A}
+\end{flalign}
 If $\mu > 1$, then the carrier is over-modulated and the envelope will be distorted. To avoid over-modulation, keep $0 < \mu < 1$.
-\subsection{DSB-TC Power and Efficiency}
-\[
-	P_s = \text{average sideband power}, P_c = \text{average carrier power}
-\]
-\[
-	\eta = \text{efficiency} = \frac{P_s}{P_s + P_c}*100\%
-\]
+\subsection{\textbf{DSB-TC Power and Efficiency}}
+\begin{flalign}
+	& P_s = \text{average sideband power} \\
+	& P_c = \text{average carrier power} \\
+	& \eta = \text{efficiency} = \frac{P_s}{P_s + P_c}*100\%
+\end{flalign}
 For DSB-SC, $\eta = 100\%$. For DSB-TC, $\eta < 33\%$. Although less power efficient, DSB-TC requires less complicated and expensive receiver circuitry.
+\section{Week 4}
+\subsection{\textbf{AM DSB-TC Receivers}}
+\subsubsection{\textbf{Coherent Demodulation}}
+To demodulate a signal ($x(t) = [A + m(t)]cos(2\pi f_ct)$), we can use a coherent demodulator that multiplies this by the same carrier cosine:
+\begin{flalign}
+	& x(t) = cos(2\pi f_ct)[A + m(t)]cos(2\pi f_ct) \\
+	& = \frac{1}{2}[A + m(t)][1 + cos(4\pi f_ct)
+\end{flalign}
+A low-pass filter and a capacitor will eliminate the high frequency component and DC, leaving us with just the message signal. This is mathematically simple but very expensive to implement as we need both transmitter and receiver to be frequency and phase matched.
+\subsubsection{\textbf{Incoherent Demodulation - Rectifier Detector}}
+We can also use envelope detectors and rectifier detectors to demodulate a signal, which means the frequency and phase is not essential. A rectifier detector is shown in Figure2.
+\begin{figure}[h]
+		\hfill\includegraphics[scale=.4]{RectifierDetector.jpg}						\hspace*{\fill}
+		\caption{A rectifier detector circuit and corresponding waveforms}
+\end{figure}
+Effectively, the AM signal is multiplied by a square pulse train, $k(t)$.
+\begin{flalign}
+	& x(t) = [A + m(t)]cos(2\pi f_ct)k(t) \\
+	& = [A + m(t)]cos(2\pi f_ct)(\frac{1}{2}+\frac{2}{\pi}cos(2\pi f_ct) \\
+	& - \frac{1}{3}cos(3*2\pi f_ct) + \frac{1}{5}cos(5*2\pi f_ct) - ...) \\
+	& = \frac{1}{\pi}[A + m(t)] + \text{other high frequency terms}
+\end{flalign}
+After a low-pass filter and capacitor, we get the scaled message signal, $m(t)/\pi)$, which can be amplified as required.
+\subsubsection{\textbf{Incoherent Demodulation - Envelope Detector}}
+Figure 3 shows the circuit of an envelope detector. On the signal positive cycle, the capacitor charges and then as the signal falls below the peak capacitor voltage, it discharges into the resistor. This forces the output voltage to follow the envelope, not the transmitted signal.
+\begin{figure}[h]
+		\hfill\includegraphics[scale=.6]{EnvelopeDetector.jpg}						\hspace*{\fill}
+		\caption{A rectifier detector circuit and corresponding waveforms}
+\end{figure}
+There will be a ripple component at the frequency, $f_c$. In order to optimise this ripple:
+\begin{flalign}
+	& 2\pi B < \frac{1}{RC} << 2\pi f_c \quad \text{(B = signal bandwidth)}
+\end{flalign}
+\subsubsection{\textbf{Incoherent Demodulation - Superheterodyne Receiver}}
+The superheterodyne circuit works as per the following list:
+\begin{itemize}
+	\item antenna converts radiowaves to high frequency electrical signal;
+	\item band-pass filter tunes to particular band;
+	\item mixer translates AM DSB-TC from $f_c$ to an intermediate frequency, $f_i$ to allow high frequency band for all radio stations (500 kHz to 1.6 MHz);
+	\begin{flalign}
+	& g(t) = =[A+m(t)[cos(2\pi f_i t + \alpha)
+\end{flalign}
+	\item $f_i$ is generally 455 kHz;
+	\item AGC keeps the signal that reaches the envelope detector at a semi-constant gain;
+	\item envelope detector eliminates high frequency signal and recovers the low frequency audio;
+	\item audio signal is amplified and sent to the loudspeaker.
+\end{itemize}
+\begin{figure}[h]
+		\hfill\includegraphics[scale=.3]{Superheterodyne.jpg}						\hspace*{\fill}
+		\caption{Superheterodyne circuit diagram}
+\end{figure}
+\subsection{\textbf{AM Modulation - Single Side Band}}
+Practically speaking, it is not possible to suppress one sideband fully while passing the other. A frequency gap is required between the bands. As the carrier frequency increases, the transition region of the filter will increase. We need to do the modulation in two steps. For speech (300 Hz to 3.4 kHz), there is a gap of 600 Hz between the lower end of the basebands.
+\begin{itemize}
+	\item the baseband is modulated by a low carrier frequency (Figure 5a) to have a large transition region for the filter;
+	\item the lower sideband is filtered out (Figure 5b);
+	\item the signal is then modulated at a higher carrier frequency, giving a much larger transition region for the received signal at the other end (Figure 5c).
+\end{itemize}
+\begin{figure}[h]
+		\hfill\includegraphics[scale=.38]{SSBModulator.jpg}						\hspace*{\fill}
+		\caption{SSB modulation phase}
+\end{figure}
+\subsection{\textbf{Hilbert Transform}}
+The Hilbert transform is defined as:
+\begin{flalign}
+	& x_h(t) = x(t)*\frac{1}{\pi t} = \frac{1}{\pi}\int_{-\infty}^{\infty} \frac{x(\tau)}{t - \tau} d\tau \\
+	& X_h(f) = -jX(f)sgn(f) \\
+	& [f > 0 : sgn(f) = 1]  \quad [f < 0 : sgn(f) = -1]
+\end{flalign}
+For the general case, the time domain representation of an SSB signal is:
+\begin{flalign}
+	& s_{usb}(t) = m(t)cos(2\pi f_ct) - m_h(t)sin(2\pi f_ct) \\
+	& s_{lsb}(t) = m(t)cos(2\pi f_ct) + m_h(t)sin(2\pi f_ct)
+\end{flalign}
+where $m_h(t)$ is the Hilbert transform of the message signal. Some common transforms are given in Figure 6. In effect, the Hilber transform shifts the phase of each frequency component of the input signal by -$\pi$/2.
+\begin{figure}[h]
+		\hfill\includegraphics[scale=.65]{Hilbert.jpg}						\hspace*{\fill}
+		\caption{Common Hilbert transforms}
+\end{figure}
+\subsection{\textbf{AM Modulation - Vestigial Sideband}}
+In VSB modulation, a gradual attenuation from one sideband to the other is used (Figure 7).However, it is much easier to generate than an SSB signal as it requires simple filtering of the output of a DSB modulator.
+\begin{figure}[h]
+		\hfill\includegraphics[scale=.65]{VSB.jpg}						\hspace*{\fill}
+		\caption{Vestigial sideband modulation}
+\end{figure}
+\section{Week 5}
+Other than amplitude, we can also vary the frequency (FM) and phase (PM) of a signal. Angle modulation is non-linear, so we cannot use the Fourier transform on a modulated signal.
+\subsection{\textbf{Phase Modulation}}
+\begin{flalign}
+	& s(t) = Acos(\theta(t)) \\
+	& \theta(t) = 2\pi f_ct + k_pm(t) \\
+	& \omega_i(t) = \frac{d\theta(t)}{dt} = 2\pi f_c + k_p\frac{dm(t)}{dt} \\
+	& f_i(t) = \frac{1}{2\pi}\frac{d\theta(t)}{dt} = f_c + \frac{k_p}{2\pi}\frac{dm(t)}{dt} \\
+	& B_{PM} \approx 2[\frac{k_pd_{max}}{2\pi} + B] \\
+	& d_{max} = max(\frac{dm(t)}{dt}) = -min(\frac{dm(t)}{dt}) \\
+	& f\Delta = \frac{f_{i,max} - f_{i,min}}{2} = \frac{k_p}{2\pi}\frac{m_{max} - m_{min}}{2}
+\end{flalign}
+\subsection{\textbf{Frequency Modulation}}
+Most of the power of an FM signal is contained within the first three harmonics.
+\begin{flalign}
+	& B = 3f = \frac{3}{T} \\
+	& f_i(t) = f_c + \frac{1}{2\pi}k_fm(t) \\
+	& \theta(t) = 2\pi \int_{-\infty}^{t}f_i(t)dt \\
+	& s(t) = Acos(\theta(t)) = Acos(2\pi f_ct + k_f \int_{-\infty}^{t}m(\tau)d\tau] \\	
+	& B_{FM} = 2f_m(1 + \beta) \text{[Carson's Rule]} \\
+	& f\Delta = \frac{f_{i,max} - f_{i,min}}{2} = \frac{k_f}{2\pi}\frac{m_{max} - m_{min}}{2}
+\end{flalign}
+\subsection{\textbf{Deviation Ratio/Modulation Index}}
+\begin{flalign}
+	& \beta = \frac{f\Delta}{B} \\
+	& [\text{Max deviation}] \beta_{max} = max(\theta(t))
+\end{flalign}
+If $\beta << 1$, then we have narrowband FM, otherwise we have wideband FM. This is generally divided around $\beta = 0.5$.
+\subsection{\textbf{Tone Modulation}}
+\begin{flalign}
+	& m(t) = acos(2\pi f_mt) \\
+	& \int_{}{}m(t)dt = \frac{a}{2\pi f_m}sin(2\pi f_mt) \\
+	& \text{FM wave} = \psi(t) = Acos(2\pi f_mt + \frac{k_fa}{2\pi f_m}sin(2\pi f_mt)) \\
+	& \beta = \frac{f\Delta}{f_m} = \frac{k_fa}{2\pi f_m}
+\end{flalign}
+In theory, we have infinite bandwidth, but in practice, the harmonics get weaker and weaker. The majority of the wave power is contained in the first three harmonics. The magnitude of these harmonics is given by the Bessel functions where:
+\begin{flalign}
+	& [\text{odd n}] J_n(x) = -J_{-n}(x) \\
+	& [\text{even n}] J_n(x) = J_{-n}(x)
+\end{flalign}
+An FM tone-modulated signal has a carrier component and an infinite number of sidebands at frequencies $f_c \pm nf_m$. The magnitude of the carrier component and these sidebands is calculated as $J_n(\beta)$. A table is presented in Figure:
+\begin{figure}[h]
+		\hfill\includegraphics[scale=.65]{Bessel.jpg}						\hspace*{\fill}
+		\caption{Bessel function values}
+\end{figure}
+\subsection{\textbf{Narrowband}}
+\begin{flalign}
+	& g_{NBFM}(t) = A[cos(2\pi f_ct) - k_f \int_{}{}m(\tau)d\tau sin(2\pi f_ct)] \\
+	& g_{NBPM}(t) = A[cos(2\pi f_ct) - k_pm(t) sin(2\pi f_ct)]
+\end{flalign}
+\subsection{\textbf{Armstrong Wideband Modulation}}
+Armstrong modulation is used to move from NB to WB FM. A non-linear element like a diode or transistor will yield a multiplied signal.
+\begin{flalign}
+	& x(t) = Acos(2\pi f_ct + k_f \int_{}^{}m(\tau)d\tau) \\	
+	& y(t) = ax^n(t) \\
+	& y(t) = a_0 + a_1x(t) + a_2x^2(t) ... + a_Nx^N(t) \\
+	& y(t) = c_0 + c_1cos(2\pi f_ct + k_f \int_{}^{}m(\tau)d\tau) + \\ 				& c_2cos(4\pi f_ct + 2k_f \int_{}^{}m(\tau)d\tau) \\
+	& ... + c_Ncos(2N\pi f_ct + Nk_f \int_{}^{}m(\tau)d\tau)
+\end{flalign}
+\begin{figure}[h]
+		\hfill\includegraphics[scale=.45]{Armstrong.jpg}						\hspace*{\fill}
+		\caption{Armstrong wideband modulating circuit}
+\end{figure}
+\subsection{\textbf{FM Demodulation}}
+To demodulate an FM signal, we use a differentiator followed by an envelope detector.
+\begin{flalign}
+	& x(t) = Acos(2\pi f_ct + k_f \int_{}^{}m(\tau)d\tau) \\	
+	& \frac{dx(t)}{dt} = -A[2\pi f_ct + k_f m(t)]sin(2\pi f_ct + k_f \int_{}^{}m(\tau)d\tau) \\
+	& y(t) = A[2\pi f_ct + k_f m(t)]\rightarrow A + k_f m(t)
+\end{flalign}
+We eliminate the DC term with a capacitor. Note: in the frequency domain, to differentiate, we multiply by $j2\pi f$.
+\begin{flalign}
+	& g(t) = \int_{}{}G(f)e^{j2\pi ft}df \\
+	& \dot{g(t)} = \int_{}{}j2\pi fG(f)e^{j2\pi ft}df
+\end{flalign}
+In Figure 10, the RC filter acts as a differentiator if $2\pi fRC << 1$:
+\begin{figure}[h]
+		\hfill\includegraphics[scale=.7]{FMDemod.jpg}						\hspace*{\fill}
+		\caption{FM demodulation example}
+\end{figure}
+\begin{flalign}
+	& V_{out}(f) = \frac{j2\pi fRC}{1 + j2\pi fRC}V_{in}(f) \\
+	& \rightarrow V_{out}(f) \approx j2\pi fRCV_{in}(f)
+\end{flalign}
+\subsection{\textbf{FM Immunity to Noise}}
+FM systems are better at rejecting noise than AM systems. Noise is generally uniformly spread across the spectrum and varies randomly in amplitude. The change in amplitude can modulate the signal and be picked up in an AM system.
+FM systems are inherently immune to random noise. For noise to interfere in FM, it will have to modulate the frequency somehow. But the noise is distributed uniformly in frequency and varies mostly in amplitude. Hence, minimum interference is picked up in FM receivers.
+\subsection{\textbf{Interference}}
+Consider the case of an unmodulated carrier, $Acos(2\pi f_ct)$, with some interference at a frequency of $f_c + f_d$ given as $Icos(2\pi(f_c + f_)t)$. The receiver input is then:
+\begin{flalign}
+	& r(t) = Acos(2\pi f_ct) + Icos(2\pi (f_c + f_d)t) \\
+	& = [A + cos(2\pi f_dt)]cos(2\pi f_c)t - Isin(2\pi f_dt)sin(2\pi f_ct)
+\end{flalign}
+The output of the demodulators will be:
+\begin{flalign}
+	& [\text{PM}] \theta(t) = \frac{Isin(2\pi f_dt)}{A} \\
+	& [\text{FM}] \frac{d\theta(t)}{dt} = \frac{2\pi f_dIcos(2\pi f_dt)}{A}
+\end{flalign}
+As can be seen, for PM, the interference is constant, but for FM, it scales with $f_d$. However, this is inversely proportional to $A$. The larger the carrier power, the smaller the interference.
+\begin{figure}[h]
+		\hfill\includegraphics[scale=.4]{Interference.jpg}						\hspace*{\fill}
+		\caption{Interference for FM and PM signals}
+\end{figure}
+By using pre-emphasis and de-emphasis filters, an FM signal can be received undistorted but noise at high frequencies can be significantly reduced. This is because noise is added after transmission and so is not amplified by the pre-emphasis filter but is reduced by the de-emphasis filter as per Figure 12.
+\begin{figure}[h]
+		\hfill\includegraphics[scale=.45]{Emphasis.jpg}						\hspace*{\fill}
+		\caption{Pre-emphasis and de-emphasis filters}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
