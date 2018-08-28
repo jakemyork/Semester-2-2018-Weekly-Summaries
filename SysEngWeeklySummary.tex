@@ -1,0 +1,410 @@
+\documentclass[journal]{IEEEtran}
+%\documentclass[conference]{IEEEtran}
+%\documentclass[conference,compsoc]{IEEEtran}
+%\documentclass{aiaa-pretty}
+%\documentclass{report}
+%\documentclass[10pt,conference,a4paper]{IEEEtran}
+
+\usepackage[ampersand]{easylist}
+\usepackage{mathtools}
+\usepackage{scrextend}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{listings}
+\usepackage{color}
+\usepackage{algorithm2e} %for pseudo code
+\usepackage{textcomp}
+\usepackage{hyperref}
+%\usepackage{graphicx}
+%\usepackage{draftwatermark}
+%\SetWatermarkLightness{0.75}
+%\SetWatermarkScale{.5}
+\hypersetup{colorlinks=true, urlcolor=blue}
+\begin{document}
+
+\title{Systems Engineering Weekly Summary}
+{}
+\maketitle
+
+\section{Week 1}
+\subsection{\textbf{Standish Chaos Report}}
+The 1994 report surveyed IT executive managers from large, medium and small US companies with management information systems. They had 365 respondents that represented 8,380 software applications in the market. The report can be found here: \href{https://www.projectsmart.co.uk/white-papers/chaos-report.pdf}{Standish Chaos Report}. It surveyed the managers on projects and found the following:
+\begin{itemize}
+	\item successful projects (on time and on budget): \textbf{16.2\%}
+	\item challenged projects (completed, but not on time, on budget or with reduced functionality compared to specification): \textbf{52.7\%}
+	\item impaired projects (cancelled at some point): \textbf{31.1\%}
+\end{itemize}
+\subsubsection{Success factors}
+The project success factors were found to be:
+\begin{itemize}
+	\item user involvement: \textbf{15.9\%}
+	\item executive management support: \textbf{13.9\%}
+	\item clear statement of requirements: \textbf{13.0\%}
+	\item proper planning: \textbf{9.6\%}
+	\item realistic expectations: \textbf{8.2\%}
+	\item smaller project milestones: \textbf{7.7\%}
+	\item competent staff: \textbf{7.2\%}
+	\item ownership: \textbf{5.3\%}
+	\item clear vision and objectives: \textbf{2.9\%}
+	\item hard-working, focused staff: \textbf{2.4\%}
+	\item other: \textbf{13.9\%}
+\end{itemize}
+\subsubsection{Challenged factors}
+The project challenged factors were found to be:
+\begin{itemize}
+	\item lack of user input: \textbf{12.8\%}
+	\item incomplete requirements and specifications: \textbf{12.3\%}
+	\item changing requirements and specifications: \textbf{11.8\%}
+	\item lack of executive support: \textbf{7.5\%}
+	\item technology incompetence: \textbf{7.0\%}
+	\item lack of resources: \textbf{6.4\%}
+	\item unrealistic expectations: \textbf{5.9\%}
+	\item unclear objectives: \textbf{5.3\%}
+	\item unrealistic time frames: \textbf{4.3\%}
+	\item new technology: \textbf{3.7\%}
+	\item other: \textbf{23.0\%}
+\end{itemize}
+\subsubsection{Impaired factors}
+The project impaired factors were found to be:
+\begin{itemize}
+	\item incomplete requirements: \textbf{13.1\%}
+	\item lack of user involvement: \textbf{12.4\%}
+	\item lack of resources: \textbf{10.6\%}
+	\item unrealistic expectations: \textbf{9.9\%}
+	\item lack of executive support: \textbf{9.3\%}
+	\item changing requirements and specifications: \textbf{8.7\%}
+	\item lack of planning: \textbf{8.1\%}
+	\item didn't need it any longer: \textbf{7.5\%}
+	\item lack of IT management: \textbf{6.2\%}
+	\item technology illiteracy: \textbf{4.3\%}
+	\item other: \textbf{9.9\%}
+\end{itemize}
+The report also speaks at length about four case studies: the California DMV, American Airlines and CONFIRM Car Rental, Hyatt Hotels and Banco Itamarati.
+\subsection{\textbf{Systems Engineering Job Ads}}
+We were required to be able to list relevant skills required by companies when they recruit systems engineers. Some of these were:
+\begin{itemize}
+	\item proficiency in company-relevant software
+	\item ability to manage whole of life cycle of engineering projects
+	\item ability to maintain technical documentation and conduct technical investigations
+	\item have a developed professional network within the industry
+	\item have teamwork, communication skills and professionalism
+	\item previous experience
+	\item ability to troubleshoot software problems
+	\item have a customer focus
+	\begin{itemize}
+		\item NV1 clearance
+		\item citizenship
+		\item experience on Defence projects
+	\end{itemize}
+\end{itemize}
+\subsection{\textbf{Lecture 0 - Course Overview}}
+\subsubsection{System Factors}
+Types of systems are defined on page 4 of the textbook. When a system is designed, there are a number of necessary factors to consider. Broadly, these can be grouped as the acronym, POSTED:
+\begin{itemize}
+	\item people
+	\item organisation
+	\item support
+	\item training
+	\item equipment $\rightarrow$ specification $\rightarrow$ engineering $\rightarrow$ product
+	\item doctrine
+\end{itemize}
+\subsubsection{System Life Cycle}
+The system life cycle is broken down into four phases:
+\begin{itemize}
+	\item pre-acquisition phase: idea for a system being generated as a result of business planning, including consideration of possible options, research and development
+	\item acquisition phase: bringing the chosen system into service, including definition of business/stakeholder requirements and engagement of contractors
+	\begin{itemize}
+		\item conceptual design phase: production of a set of clearly defined requirements in logical terms - this results in several key documents:
+		\begin{itemize}
+			\item Business Needs and Requirements (BNR)
+			\item Stakeholder Needs and Requirements (SNR)
+			\item System Requirement Specification (SyRS)
+			\item System Design Review (SDR)	
+		\end{itemize}
+		\item 
+	\end{itemize}
+	\item utilisation phase: the functional life of the system, including maintenance, modification and upgrades
+	\item retirement phase: end of the life cycle of the system as it no longer meets operational requirements - the end of this life cycle could be the start of a new life cycle with a different business (service aircraft being used for scenic flights, for example)
+\end{itemize}
+\subsection{\textbf{Lecture 1 - Intro to Systems Engineering}}
+\subsubsection{Broad Description of Systems}
+This can be one of two ways:
+	\begin{itemize}
+		\item logical/functional - what the system will do, described with a narrative or scenarios in mind;
+		\item physical - the technical specifications of system elements, how they look, dimensions etc.
+	\end{itemize}
+\subsubsection{Conceptual Design Overview}
+This marks a formal transition from the stakeholder requirements specification (which is business-y) to a complete logical, physical description of the system. It ensures proper definition of system technical requirements and integrates the appropriate stakeholders in decision making. In this phase, we transition from BNR and SNR to a full SyRS developed by requirements engineers and eventually to the functional baseline for the system. After this, we transition to the system design review to ensure that both engineers and stakeholders are satisfied with the logical and physical concept of the system and how it will be designed. The SDR confirms BNR, SNR and SyRS formally.
+\subsubsection{Preliminary Design Overview}
+This part of the design phase takes the functional baseline and allocates the development of each subsystem to specific configuration items through means of an allocated baseline (system requirements being allocated to subsystems). Finally, this phase has a preliminary design review; again, this formalises all decisions made during this phase.
+\subsubsection{Detailed Design and Development Overview}
+During this phase, each subsystem (and components thereof) is developed in accordance with the ABL, the SyRS and the StRS. This results in both the product baseline and a critical design review.
+\subsubsection{Construction and Production Overview}
+After design and detailed verification and validation of the entire system, components are produced in accordance with the PBL. This ends with a formal qualification review, which formalises the customer accepting the system in its current state from the contractor as designed to specification. This is informed by acceptance test and evaluation.
+\subsubsection{Utilisation/Retirement Overview}
+During this phase, the system undergoes operational use, maintenance programs, and modifications and upgrades as deemed necessary by the customer. Ultimately, the system is retired as it is no longer viable, necessary or redundant.
+\subsubsection{Types of Development Approach}
+These can be loosely grouped into a few categories, with the most common being the first one:
+\begin{itemize}
+	\item waterfall
+	\item incremental
+	\item spiral
+	\item evolutionary
+\end{itemize}
+These will be individually defined later. For now, we need to tailor our approach always to maximise value/viability and minimise risk.
+\subsubsection{System Need-To-Know}
+There are five things we need to know clearly about a system that is being designed:
+\begin{itemize}
+	\item what the system will do;
+	\item how it does its job and how well it does it;
+	\item under what conditions it operates;
+	\item what systems it needs to integrate with;
+	\item how can we be absolutely sure that it succeeds in these tasks?
+\end{itemize}
+
+\section{Week 2}
+\subsection{\textbf{Lecture 2 - Conceptual Design}}
+\subsubsection{Stakeholder Requirements Specification}
+This document should contain:
+\begin{itemize}
+	\item likely applications for the system;
+	\item major operational characteristics;
+	\item operational or safety constraints;
+	\item external systems/interfaces;
+	\item operational and support environment;
+	\item the support concept to be employed.
+\end{itemize}
+\subsubsection{System Requirements Review}
+This may be conducted periodically through the conceptual design phase to verify and approve versions of system-level requirements. The goal of this review process is to monitor and approve requirements on the way to the initial FBL. It allows requirements analysis to continue to lower levels of the system hierarchy by validating higher levels, providing a firm baseline for lower level analysis to work from.
+
+\section{Week 3}
+\subsection{\textbf{Lecture 3 - Preliminary Design}}
+\subsubsection{\textbf{Requirements Allocation}}
+Requirements allocation refers to the allocation of specific design requirements to elements of the design. This requires expertise in the domain of the system in question to understand which subsystems can handle which requirements. It's important to remember at this point that we don't want scope creep and extra functionality that hasn't been requested. Both the contractor and customer need to be able to look horizontally and understand the impact that requirements of a subsystem may have on other subsystems. This is particularly relevant when changes are proposed. It's really important to remember that requirements need to inform design choices and not the other way around.
+\subsubsection{\textbf{Configuration Items}}
+Subsystems are broken into configuration items. These could be in the form of hardware vs software or in elements of a subsystem being bought by the subcontractor as COTS items. The configuration of each item is managed separately for design, development, documentation, construction, auditing and testing. Items can be identified as CIs due to:
+\begin{itemize}
+	\item complexity;
+	\item interfaces;
+	\item use/function;
+	\item commonality;
+	\item single supplier ownership;
+	\item criticality;
+	\item maintenance and documentation needs.
+\end{itemize}
+The CI decision process belongs to the contractor but may be influenced by the customer, who may have particular constraints on suppliers, requirements for documentation and intellectual property rights (access to software under the hood etc).
+\subsubsection{Interface Selection}
+Interfaces between relevant subsystems are identified at this stage of design. These determine successful operation of the system once integrated, but also place limitations and requirements on individual subsystems/CIs. These interfaces can be:
+\begin{itemize}
+	\item physical: pipes, wires, fibre;
+	\item electronic: wired/wireless;
+	\item software: I/O, data format, protocols;
+	\item human-machine: layouts, displays, seating, controls;
+	\item electrical: voltage levels/types, frequency, tolerances;
+	\item environmental: vibration, acoustic, thermal, magnetic, radiation;
+	\item hydraulic/pneumatic: flow rates, temperatures, pressures.
+\end{itemize}
+\subsubsection{Subsystem Design Choices}
+There are three broad choices available to subsystem developers:
+\begin{itemize}
+	\item buy the subsystem from a supplier and integrate (COTS):
+	\begin{itemize}
+		\item (+) readily available;
+		\item (+) cheaper;
+		\item (+) reduce technical risk and maintenance liability;
+		\item (-) may not be suitable/approaching outdated state;
+		\item (-) could be quite immature/unproven;
+		\item (-) may have less support/documentation;
+		\item (-) may have undesired functionality.
+	\end{itemize}
+	\item buy a COTS subsystem and modify to meet needs (modified COTS):
+	\begin{itemize}
+		\item (+) same advantages as COTS;
+		\item (-) maintenance/support may be void if modified;
+		\item (-) effort to modify could outweigh benefits of COTS in the first place.
+	\end{itemize}
+	\item design and build specific to purpose:
+	\begin{itemize}
+		\item (+) should meet exact needs;
+		\item (+) should be fully understood by own organisation;
+		\item (-) may not eventuate;
+		\item (-) significant effort;
+		\item (-) maintenance and support is wholly own responsibility.
+	\end{itemize}
+\end{itemize}
+\subsubsection{The Design Space}
+The reason we conduct requirements analysis and develop particular subsystems (that may not be optimal) is to develop as close to an optimal system-level solution as possible. System-level requirements outweigh everything at the subsystem level and below. Design and selection of subsystems may be required to be evaluated a number of times before preliminary design is complete and this may be influenced significantly by the Standish Report reasons given above as well as long project times that can lead to technological developments that influence the system.
+\subsubsection{Preliminary Design Review}
+Once	complete, preliminary design results in a description of the preliminary architecture of hardware, software, personnel and so on organised in such a way as to satisfy the series of applicable requirements. The main deliverable is a description of all of the subsystems and how they interface with each other. Once the design is mature enough, it is reviewed before releasing the Allocated Baseline (ABL). This is only after the customer is sufficiently satisfied with the system design. The review process investigates each CI, ensuring that requirements have been appropriately allocated.
+\section{Week 4}
+\subsection{\textbf{Lecture 4 - Detailed Design and Development}}
+\subsubsection{\textbf{Product Baseline}}
+After preliminary design, detailed design and development finalises the design of specific components that make up each CI. The realisation and documentation of all of these individual components is the Product Baseline (PBL). The PBL is a detailed description of the products that meet the requirements allocated to them in the ABL.
+\subsubsection{\textbf{Detailed Design Process}}
+Sufficient detail is required in the PBL to facilitate construction/production. Once this has been completed (the `what'), analysis on production methods must be done (the `how'). The process:
+\begin{itemize}
+	\item is iterative;
+	\item features review/feedback;
+	\item involves integration of assemblies/components;
+	\item may result in prototypes;
+	\item involves test and evaluation.
+\end{itemize}
+At each stage of integration (components, assemblies, subsystems), evaluation will take place to ensure that requirements are being met and that elements are integrating effectively.
+\subsubsection{\textbf{Prototypes}}
+Prototypes may be required to verify the design in a final state. These combine and integrate all lower-level components.
+\subsubsection{\textbf{Critical Design Review}}
+This is a major review of detailed design and development. It also marks the final stage before construction/production. Things reviewed include:
+\begin{itemize}
+	\item software products;
+	\item design drawings;
+	\item materials and parts lists;
+	\item analyses and other reports.
+\end{itemize}
+Aims include:
+\begin{itemize}
+	\item design evaluation;
+	\item determination of readiness for production;
+	\item determination of maturity of software;
+	\item determination of design compatibility;
+	\item establishment of the PBL.
+\end{itemize}
+\subsection{\textbf{Lecture 4 - Construction/Production}}
+This phase could be very large and require well-supported infrastructure ... or not. Compare a single flight simulator production and a fleet of armoured vehicles. The requirements of this phase need to be considered early in the design of the overall system.
+\subsubsection{\textbf{Production Issues to Address}}
+The following production issues must be addressed early in system development:
+\begin{itemize}
+	\item material availability (lead time), ordering and handling;
+	\item availability of skill sets and requirement to train production force;
+	\item availability of tools, equipment and facilities;
+	\item processing and process control;
+	\item assembly, inspection and testing facilities/requirements;
+	\item packaging, storage and handling.
+\end{itemize}
+\subsubsection{\textbf{Production Plan}}
+The contents of the Production Plan include:
+\begin{itemize}
+	\item resources:
+	\begin{itemize}
+		\item plant size and type (need to consider lead time, expense and any specialised plant requirement);
+		\item personnel resources (need to consider number and specialisation of personnel, including training delta).
+	\end{itemize}
+	\item production engineerng considerations:
+	\begin{itemize}
+		\item scheduling;
+		\item manufacturing methods/processes;
+		\item tooling and test equipment;
+		\item facility requirements;
+		\item automation.
+	\end{itemize}
+	\item materials and purchased parts:
+	\begin{itemize}
+		\item Bill of Materials (BOM);
+		\item procurement of any COTS CIs;
+		\item identification and mitigation of long lead times;
+		\item inventory control.
+	\end{itemize}
+	\item management and logistics;
+	\item other activities such as test and evaluation;
+	\item configuration audits.
+\end{itemize}
+\subsubsection{\textbf{Functional Configuration Audit}}
+This is used to verify and certify that a CI meets performance requirements as specified in the Development and Product Specifications. This may not be a full review - it can be done incrementally throughout the development of the CI. Sometimes this audit cannot be done due to some CIs needing other CIs to be functional and integrated to work effectively. FCA will usually precede PCA so as to avoid failing the FCA and invalidating the PCA.
+\subsubsection{\textbf{Physical Configuration Audit}}
+This audit confirms that the as-built CI matches product specifications, design drawings and technical (simulation) data. A PCA is conducted on the first production version of each CI.
+\subsubsection{\textbf{Test Readiness Review}}
+Testing is expensive and time-consuming, involving highly trained personnel and special facilities/equipment. Sometimes, TRR is required to ensure a system is ready to undergo testing. The idea is to avoid T\&E on CIs or a system that is not properly mature enough. The TRR usually reviews a range of documentation, including:
+\begin{itemize}
+	\item verification plans;
+	\item formal and informal test results;
+	\item supporting documentation;
+	\item support, test and equipment facilities.
+\end{itemize}
+\subsubsection{\textbf{Formal Qualification Review}}
+FQR may be required to verify that all the CIs meet functional requirements once integrated. FQR verifies specifications in SyRS, development specifications and interface requirement specifications.
+\subsubsection{\textbf{Configuration Management}}
+CM is the act of keeping track of what is being designed, current versions of parts, requests for changes and results of audits.
+
+\section{Week 5}
+\subsection{\textbf{Lecture 5 - Systems Engineering Management and Risk}}
+
+
+
+
+
+
+\section{Definitions}
+\subsubsection{Approach - Evolutionary}
+Similar to the incremental approach; however this approach seeks to build upon previous builds and continue to evolve a system to satisfactory completion.
+\subsubsection{Approach - Incremental}
+For many reasons, it may be inadvisable to deliver a project in a single iteration (limited capability demand early, insufficient funds/time, incomplete understanding of system requirements, risk management). With a good understanding of the scope of the project, this approach allocates aspects to a series of increments to be delivered over time.
+\subsubsection{Approach - Spiral}
+Primarily a software model, this approach makes clear that a design development cannot be precisely determined prior to its full development and requires constant re-evaluation of the system at specific intervals. This allows for consideration given to changes in user perceptions, results of prototypes, technology advances, risk determinations, funding or other factors that may become relevant.
+\subsubsection{Approach - Waterfall}
+This approach relies on the development of a complete set of requirements at the system level, which influences and cascades into the subsystem requirements, which in turn, drive the requirements for the assemblies and components. At each transition, a baseline tends to be established.
+\subsubsection{Construction}
+The assembly and building of the system.
+\subsubsection{Production}
+The manufacturing and procurement effort needed to support construction.
+\subsubsection{Project}
+A Project is a temporary endeavor undertaken to create a unique product, service, or result.
+\subsubsection{Project Management}
+Project Management is the application of knowledge, skills, tools and techniques to project activities to meet the project requirements.
+\subsubsection{Scope Creep}
+Scope creep means changes, continuous or uncontrolled growth in the scope of a system's functionality, including the addition of undesired functionality as a byproduct of COTS CIs.
+\subsubsection{System}
+ISO/IEC/IEEE 15288 defines a system as a combination of interacting elements organised to achieve one or more stated purposes. A system comprises internal elements with interconnections (subsystems) and an external boundary. Anything inside the boundary is defined as the system of interest. The mission of a system is to provide a solution to a business problem.
+\subsubsection{Systems Engineering}
+An interdisciplinary collaborative approach to derive, evolve, and verify a life-cycle balanced system solution which satisfies customer expectations and meets public acceptability.
+\subsubsection{Traceability}
+Forward	traceability	allows design decisions to be	traced from any requirement down	to a	lower level. Backward	 traceability means that any lower-level requirement is associated with at least one higher-level requirement.
+\subsubsection{Validation}
+This is the process of ensuring a system meets its operational purpose as dictated in the StRS.
+\subsubsection{Verification}
+This is the process of ensuring a system complies with the detailed specifications laid out in the SyRS, by meeting contractual requirements and performing adequately in an operational environment.
+\section{Acronyms}
+\begin{tabular}{ l l }
+ABL & Allocated Baseline \\ 
+AT\&E & Acceptance Test and Evaluation \\
+BNR & Business Needs and Requirements \\
+BOM & Bill of Materials \\
+CDR & Critical Design Review \\
+CI & Configuration Item/Critical Issue \\
+CM & Configuration Management \\
+CoC & Conditions of Contract \\
+COI & Critical Operation Issue \\
+COTS & Commercial Off The Shelf \\
+DT\&E & Development Test and Evaluation \\
+FBL & Functional Baseline \\
+FCA & Functional Configuration Audit \\
+FFBL & Functional Flow Block Diagram \\
+FHA & Functional Hazard Analysis \\
+FIC & Fundamental Inputs to Capability \\
+FQR & Formal Qualification Review \\
+FRACAS & Failure Reporting and Corrective Action System \\
+LCC & Life-Cycle Cost \\
+MOE & Measures of Effectiveness \\
+MOP & Measures of Performance \\
+OT\&E & Operational Test and Evaluation \\
+PBL & Product Baseline \\
+PCA & Physical Configuration Audit \\
+PDR & Preliminary Design Review \\
+PM & Project Management \\
+PRR & Product Readiness Review \\
+RBS & Requirements Breakdown Structure \\
+SDD & System Design Document \\
+SDR & System Design Review \\
+SE & Systems Engineering \\
+SoR & Statement of Requirements \\
+SoS & System of Systems \\
+SoW & Statement of Work \\
+SNR & Stakeholder Needs and Requirements \\
+SRR & System Requirements Review \\
+StRS & Stakeholder Requirement Specification \\
+SyRS & System Requirement Specification \\
+T\&E & Testing and Evaluation \\
+TEMP & Test and Evaluation Master Plan \\
+TPM & Technical Performance Measures \\
+TRR & Test Readiness Review \\
+WBS & Work Breakdown Structure \\
+\end{tabular}
+\end{document}
