@@ -655,6 +655,175 @@ Risk-driven process model generator for software projects. Iterates a set of ele
 		\item requires consistency across teams with respect to processes, skills and quality.
 	\end{itemize}
 \end{itemize}
+
+\section{Week 11}
+\subsection{Lecture 12 - Sustainment Management 1}
+Operating and use costs always outweigh acquisition costs (totalling approximately 60 to 85\%). These factors include:
+\begin{itemize}
+	\item operations;
+	\item human safety;
+	\item reputation costs;
+	\item professional responsibility and reputation;
+	\item software and ICT systems;
+	\item organisational change;
+	\item organisation reputation;
+	\item industry support;
+	\item facilities;
+	\item maintenance;
+	\item spares;
+	\item training;
+	\item distribution;
+	\item test and support equipment;
+	\item technical data;
+	\item environmental protection;
+	\item retirement and disposal.
+\end{itemize}
+Sustainment includes:
+\begin{itemize}
+	\item supply support (procurement, positioning, distribution, storage, salvage);
+	\item maintenance (operational, preventative, repair, corrective, predictive);
+	\item transportation (packaging, handling, storage, distribution);
+	\item upgrades and modification;
+	\item personnel and training;
+	\item habitability;
+	\item usability;
+	\item supportability (the degree to which a system can be supported - standardisation, interchangeability, accessibility, commonality);
+	\item survivability (to continue to operate in a hostile environment);
+	\item environment;
+	\item WHS;
+	\item anti-tamper provisions;
+	\item configuration management (the process of establishing and maintaining consistency of a product's performance, functional and physical attributes, with its requirements, design and operational information through its life);
+	\item system data management;
+	\item critical information protection;
+	\item ICT including national security systems;
+	\item interoperability functions (the ability to work with other products or systems without any restricted access or implementation).
+\end{itemize}
+Topics/aspects of sustainment:
+\begin{itemize}
+	\item systems engineering;
+	\item procurement project management;
+	\item maintenance processes;
+	\item ILS;
+	\item product life cycle management;
+	\item service management.
+\end{itemize}
+Major benefits arise from early integration of sustainment considerations:
+\begin{itemize}
+	\item operating phase costs greatly outweigh initial capital costs;
+	\item total lifecycle costs should be a prime consideration for system acquisition;
+	\item non-monetary risks must be reduced -- human death/injury, environmental damage, reputational risks and other legal risks;
+	\item the sustainment system needs to be developed in parallel the mission system;
+	\item this is difficult to achieve 360 degree processes because of ownership and procedural discontinuities.
+\end{itemize}
+\section{Week 12}
+\subsection{Lecture 13 - Sustainment Management 2}
+Life Cycle Cost Analysis is used as per the following picture:
+	\begin{figure}[h]
+		\hfill\includegraphics[width=.49\textwidth]{LCCA.jpg}\hspace*{\fill}
+	\end{figure}
+The typical method of LCCA is:
+\begin{itemize}
+	\item develop the model/s:
+	\begin{itemize}
+		\item usually a discounted cash flow model;
+		\item prompted by standardised lists and checklists.
+	\end{itemize}
+	\item conduct cost estimates for each alternative;
+	\item normalise data across alternatives;
+	\item validate the data;
+	\item conduct sensitivity analysis;
+	\item conduct risk analysis;
+	\item comparatively assess and rank alternatives;
+	\item report and present;
+	\item advocate the preferred alternative.
+\end{itemize}
+Typical life cycle cost elements for the pre-acquisition phase, acquisition phase, utilisation phase and retirement phase are included in the final lecture slides (13-16).
+LCCA tools often include (example is ACEIT):
+\begin{itemize}
+	\item cost elements lists;
+	\item standardised spreadsheets;
+	\item statistical models;
+	\item simulation tools;
+	\item checklists;
+	\item estimation techniques: analogy, parametric, engineering.
+\end{itemize}
+\subsection{Net Present Value Method}
+This is a method of comparing the value of something in dollars compared to some possible future value:
+\[
+	NPV = \sum_{t=0}^N\frac{R_t}{(1+i)^t}
+\]
+where:
+\begin{itemize}
+	\item $N$ = number of periods modelled;
+	\item $t$ = time period index;
+	\item $R_t$ = net cash flow at time period $t$;
+	\item $i$ = discount rate = average cost of capital (long term  government bod rate for government).
+\end{itemize}
+\subsection{Failure Rate}
+The failure rate is given by:
+\[
+	\gamma = \frac{number of failures}{duration} = \frac{1}{MTBF}
+\]
+Reliability of a system is 1 - $\gamma$.
+\subsection{Types of failure}
+The following are the possible types of failure:
+\begin{itemize}
+	\item mission critical - cannot complete mission;
+	\item safety critical - system safety is impacted;
+	\item common mode - susceptible to a common cause;
+	\item single point - failure of a single system element can cause system failure.
+\end{itemize}
+\subsection{Availability}
+Availability is given by:
+\[
+	A = \frac{MTBF}{MTBF+MCMT}
+\]
+where MCMT is mean corrective maintenance time.
+\subsection{TRF}
+The formal model used by an organisation to control the quality of its materiel and to enact regulations. Comprises of:
+\begin{itemize}
+	\item governance - roles, responsibilities, authority, delegations, committees;
+	\item processes;
+	\item legislation;
+	\item standards, regulation and other compliance requirements.
+\end{itemize}
+\subsection{Ways to Conduct Engineering Precedence}
+The following are ways to conduct engineering precedence:
+\begin{itemize}
+	\item design for minimum risk - eliminate hazards where possible;
+	\item incorporate safety devices - protective features;
+	\item provide warning devices -  detect and annunciate;
+	\item develop procedures and training - includes PPE;
+	\item warnings and cautions.
+\end{itemize}
+\subsection{Failure Mode, Effects and Criticality Analysis}
+This is a bottom-up, inductive analytical method used to identify failure modes
+against the severity of their consequences. It is often mandated for certain industries and is often focussed on human safety.
+\subsection{FMECA Method}
+The following is the approach taken by the FMECA method:
+\begin{itemize}
+	\item define the system;
+	\item define ground rules and assumptions in order to help drive the design;
+	\item construct system block diagrams- eg functional block diagram, fault trees;
+	\item identify failure modes (piece, part level or functional level);
+	\item analyse failure effects and causes;
+	\item classify the failure effects by severity;
+	\item perform criticality calculations;
+	\item rank failure mode criticality;
+	\item determine critical items;
+	\item identify the means of failure detection, isolation and compensation;
+	\item perform maintainability analysis;
+	\item document the results and specify design corrections;
+	\item document uncorrectable design areas and identify the necessary special controls;
+	\item make recommendations;
+	\item follow up on corrective action implementation/effectiveness.
+\end{itemize}
+	\begin{figure}[h]
+		\hfill\includegraphics[width=.49\textwidth]{whenDone.jpg}\hspace*{\fill}
+	\end{figure}
+
+
+\clearpage
 \section{Definitions}
 \subsubsection{Approach - Evolutionary}
 Similar to the incremental approach; however this approach seeks to build upon previous builds and continue to evolve a system to satisfactory completion.
@@ -672,6 +841,30 @@ Usually included with particular services/activities. Things like uniforms, empl
 Costs that can be traced to a cost object (e.g. an output or process of the activity) with a high degree of accuracy.
 \subsubsection{Costs - Indirect}
 Costs that cannot be easily linked to a cost object, or where the costs of doing so outweigh the benefits. Indirect costs are apportioned to a cost object using an appropriate cost driver.
+\subsubsection{Failure Criticality}
+Likelihood of a critical failure ie mission failure including human safety.
+\subsubsection{Failure Effect}
+The consequence(s) a failure mode has on the operation, function, or status of an item.
+\subsubsection{Failure Mode}
+The way or manner in which an item fails - considered the `anti-function'.
+\subsubsection{Failure Reliability Centered Maintenance (RCM)}
+The function of the equipment is considered. Possible failure modes and their consequences are identified. Cost effective maintenance techniques that minimise failures are identified and adopted.
+\subsubsection{Integrated Logistics Support (ILS)}
+The functions that provides initial planning, funding and controls to ensure the user will receive a system that can be expeditiously and economically supported throughout its life cycle. Includes: maintenance, supply support, test and support equipment, personnel and training, facilities and equipment, packaging, handling, storage and transportation, technical data. ILS tasks: support concept, logistics support analysis, lifecycle cost analysis, inserting ILS considerations into system design and development.
+\subsubsection{Life Cycle Cost Analysis}
+Estimation and analysis techniques for the collection, analysis and presentation of Life Cycle Costing data to assist in decision making about required capabilities. Also called total cost of ownership.
+\subsubsection{Product Life Cycle Management}
+Also called asset management. Encompasses engineering change management. The system of strategic processes to:
+\begin{itemize}
+	\item reduce the cost of getting a product to market;
+	\item efficiently scale production to meet market demand;
+	\item extend the duration of the effective life of a system;
+	\item continue maximum effectiveness through obsolescence;
+	\item collaborate among supply chain team members to design, build and manage the system;
+		\item share data across disparate systems for design, quality, manufacturing and operational systems;
+	\item collect system data for communication and management of system issues;
+	\item ensuring the system meets and retains compliance standards.
+\end{itemize}
 \subsubsection{Production}
 The manufacturing and procurement effort needed to support construction.
 \subsubsection{Project}
@@ -701,6 +894,9 @@ The systematic process of identifying, analysing, responding, and monitoring
 project risk.
 \subsubsection{Scope Creep}
 Scope creep means changes, continuous or uncontrolled growth in the scope of a system's functionality, including the addition of undesired functionality as a byproduct of COTS CIs.
+\subsubsection{Sustainment}
+To keep something going or extending its duration. The provision of personnel, logistic and other support required to maintain and  prolong operations or combat until successful accomplishment or revision of the mission or of
+the national objective.
 \subsubsection{System}
 ISO/IEC/IEEE 15288 defines a system as a combination of interacting elements organised to achieve one or more stated purposes. A system comprises internal elements with interconnections (subsystems) and an external boundary. Anything inside the boundary is defined as the system of interest. The mission of a system is to provide a solution to a business problem.
 \subsubsection{Systems Engineering}
@@ -738,6 +934,7 @@ FHA & Functional Hazard Analysis \\
 FIC & Fundamental Inputs to Capability \\
 FQR & Formal Qualification Review \\
 FRACAS & Failure Reporting and Corrective Action System \\
+ILS & Integrated Logistics Support \\
 LCC & Life-Cycle Cost \\
 MOE & Measures of Effectiveness \\
 MOP & Measures of Performance \\
